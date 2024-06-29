@@ -11,9 +11,9 @@ print(f"Current working directory: {os.getcwd()}")
 
 def LocateAndClickButton(locateImage, withinRegion=None):
     try:
+        currentMousePos = pyautogui.position()
         location = pyautogui.locateCenterOnScreen(locateImage, region=withinRegion)
         if location is not None:
-            currentMousePos = pyautogui.position()
             pyautogui.click(location)
             print(f"Clicked on the button at {location}.")
             time.sleep(0.2)
@@ -26,7 +26,7 @@ def LocateAndClickButton(locateImage, withinRegion=None):
             print("Button not found on the screen.")
         
     except Exception as e:
-        print(f"Warning: {str(e)}")
+        print(f"Warning: {str(e)} with current mouse pos {currentMousePos}")
     
     return False
 
