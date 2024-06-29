@@ -36,9 +36,12 @@ try:
             print("\nScript terminated by user.")
             break
 
-        res = LocateAndClickButton(locateImage='autoclick_target.png', withinRegion=(700,700,500,500))
+        region = None
+        #region = (500, 600, 1000, 400) # Too slow? Uncomment this to look for the buttons from mouse pos x 500 y 600 in a rectangular region of width 1000 and height 400
+        
+        res = LocateAndClickButton(locateImage='autoclick_target.png', withinRegion=region)
         if not res: 
-            LocateAndClickButton(locateImage='autoclick_target_2.png', withinRegion=(700,700,500,500))
+            LocateAndClickButton(locateImage='autoclick_target_2.png', withinRegion=region)
         time.sleep(0.5)
 
 except KeyboardInterrupt:
